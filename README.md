@@ -55,7 +55,7 @@ To run the application, first create a MySQL database and tables as specified in
 
 This project was made by a group of 4 people:
 
-Gyanendra Tiwari
-Manali Desai
-Maitreyee Jadhav
+Gyanendra Tiwari,
+Manali Desai,
+Maitreyee Jadhav,
 Raghav Bhandari
