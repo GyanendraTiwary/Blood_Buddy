@@ -23,7 +23,7 @@ def signedup():
 
     else:
          try:
-            conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+            conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
             cur = conn.cursor()
             cur.execute("Insert into BB_details (BB_username,BB_password,BB_name,BB_address,BB_city,BB_state,BB_pincode,BB_licence_no, `A+`, `A-`,`B+`,`B-`,`AB+`,`AB-`,`O+`,`O-`) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (
                 signup_username_entry.get(),
@@ -77,7 +77,7 @@ def logedin():
         return
 
     try:
-        conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+        conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
         cur = conn.cursor()
         cur.execute("select * from BB_details where BB_username=%s and BB_password=%s",(username,password))
         row = cur.fetchone()
@@ -91,7 +91,7 @@ def logedin():
             conn.close()
 
             try:
-                conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+                conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
                 cur = conn.cursor()
                 cur.execute("select BB_name, BB_licence_no from BB_details where BB_username=%s and BB_password=%s",(username,password))
                 name = cur.fetchone()
@@ -120,7 +120,7 @@ def get_pass():
         return
     
     try:
-        conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+        conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
         cur = conn.cursor()
         cur.execute("select BB_password from BB_details where BB_username=%s and  BB_licence_no=%s",(userid,int(license_no)))
         row = cur.fetchone()
@@ -205,7 +205,7 @@ def info_updated():
 
     else:
         try:
-            conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+            conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
             cur = conn.cursor()
             cur.execute("UPDATE BB_details SET BB_address=%s,BB_city=%s,BB_state=%s,BB_pincode=%s,BB_licence_no=%s WHERE BB_username = %s ", (
                 
@@ -241,7 +241,7 @@ def bs_updated():
     
     else:
         try:
-            conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+            conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
             cur = conn.cursor()
             cur.execute(f"UPDATE BB_details SET `{update_bg.get()}`=%s WHERE BB_username = %s ", (
                 
@@ -275,18 +275,18 @@ def bs_updated():
 
 #*********************************************Define All Images*************************************************#
 
-bg_login = PhotoImage(file="login.png")
-bg_signup = PhotoImage(file="signup.png")
-bg_about = PhotoImage(file="about.png")
-bg_BBMainPage = PhotoImage(file="bbmainpage.png")
-bg_BBInfo = PhotoImage(file="bbinfo.png")
-bg_BB_updatebs=PhotoImage(file="updatebgqty.png")
-bg_BB_setcamp=PhotoImage(file="BBsetupcamp.png")
-bg_acc_recovery=PhotoImage(file="accrecoverybb.png")
+bg_login = PhotoImage(file="assets\\login.png")
+bg_signup = PhotoImage(file="assets\\signup.png")
+bg_about = PhotoImage(file="assets\\about.png")
+bg_BBMainPage = PhotoImage(file="assets\\bbmainpage.png")
+bg_BBInfo = PhotoImage(file="assets\\bbinfo.png")
+bg_BB_updatebs=PhotoImage(file="assets\\updatebgqty.png")
+bg_BB_setcamp=PhotoImage(file="assets\\BBsetupcamp.png")
+bg_acc_recovery=PhotoImage(file="assets\\accrecoverybb.png")
 
 
 #exit btn
-BB_exit_btn = PhotoImage(file="bbexitBtn.png")
+BB_exit_btn = PhotoImage(file="assets/bbexitBtn.png")
 
 
 

@@ -51,7 +51,7 @@ def signedup():
     
     else:
         try:
-            conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+            conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
             cur = conn.cursor()
             cur.execute("Insert into user_details (username,password,name,aadhar_no,user_age,user_gender,user_address,user_city,user_state,user_pincode,user_bg) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (
                 signup_username_entry.get(),
@@ -105,7 +105,7 @@ def logedin():
     
 
     try:
-        conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+        conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
         cur = conn.cursor()
         cur.execute("select * from user_details where username=%s and password=%s",(username,password))
         row = cur.fetchone()
@@ -119,7 +119,7 @@ def logedin():
             conn.close()
 
             try:
-                conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+                conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
                 cur = conn.cursor()
                 cur.execute("select name from user_details where username=%s and password=%s",(username,password))
                 name = cur.fetchone()
@@ -152,7 +152,7 @@ def get_pass():
         return
     
     try:
-        conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+        conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
         cur = conn.cursor()
         cur.execute("select password from user_details where username=%s and  aadhar_no=%s",(userid,int(addhar_no)))
         row = cur.fetchone()
@@ -226,7 +226,7 @@ def search_Aval():
         messagebox.showwarning("Empty Field", "Fields Cant be Empty",parent=BloodAvbty)
 
     try:
-        conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+        conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
         cur = conn.cursor()
         cur.execute(f"select BB_name, BB_address, BB_city , BB_pincode from Bb_details where BB_city = %s and BB_state = %s and `{bas_bg.get()}`= (select max(`{bas_bg.get()}`) from BB_details where BB_city = %s and BB_state = %s);",            
         (bas_city.get(),
@@ -262,7 +262,7 @@ def donate_blood():
     
     else:
         try:
-            conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+            conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
             cur1 = conn.cursor()
             cur1.execute(f"SELECT user_pincode, user_city, user_bg from user_details where username = %s and password = %s", (login_username_entry.get(), login_password_entry.get()))
             user_det = cur1.fetchone()
@@ -284,7 +284,7 @@ def donate_blood():
 
         except Exception as e:
             try:
-                conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+                conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
                 cur2 = conn.cursor()
                 cur2.execute(f"SELECT BB_username , BB_licence_no from BB_details where BB_city = %s and `{user_det[2]}` = (select min(`{user_det[2]}`) from BB_details where BB_city = %s)",            
                 (user_det[1],
@@ -313,7 +313,7 @@ def donate_blood():
 #get blood function
 def get_blood():
     try:
-        conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+        conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
         cur1 = conn.cursor()
         cur1.execute(f"SELECT user_pincode, user_city, user_bg from user_details where username = %s and password = %s", (login_username_entry.get(), login_password_entry.get()))
         user_det = cur1.fetchone()
@@ -332,7 +332,7 @@ def get_blood():
         conn.close()
     except Exception as e:
             try:
-                conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+                conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
                 cur2 = conn.cursor()
                 cur2.execute(f"SELECT BB_username , BB_licence_no from BB_details where BB_city = %s and `{user_det[2]}` = (select max(`{user_det[2]}`) from BB_details where BB_city = %s)",            
                 (user_det[1],
@@ -370,7 +370,7 @@ def update_user_info():
     
     else:
         try:
-            conn = msc.connect(host = "127.0.0.1", password="chocolate", username= "gmmr", database= "blood_buddy")
+            conn = msc.connect(host = "your_local_IP", password="your_pass", username= "your_username", database= "blood_buddy")
             cur = conn.cursor()
             cur.execute("UPDATE user_details SET aadhar_no=%s,user_age=%s,user_gender=%s,user_address=%s,user_city=%s,user_state=%s,user_pincode=%s,user_bg=%s WHERE username = %s ", (
                 
@@ -428,14 +428,14 @@ def update_user_info():
 #*********************************************Define All Images*************************************************#
 
 
-bg_login = PhotoImage(file="login.png")
-bg_signup = PhotoImage(file="signup.png")
-bg_about = PhotoImage(file="about.png")
-bg_UserMainPage = PhotoImage(file="usermainpage.png")
-bg_BloodAvbty=PhotoImage(file="bloodAvl.png")
-bg_MedHistory=PhotoImage(file="medHistory.png")
-bg_UserInfo=PhotoImage(file="userinfo.png")
-bg_acc_recovery=PhotoImage(file="accrecoveryuser.png")
+bg_login = PhotoImage(file="assets\\login.png")
+bg_signup = PhotoImage(file="assets\\signup.png")
+bg_about = PhotoImage(file="assets\\about.png")
+bg_UserMainPage = PhotoImage(file="assets\\usermainpage.png")
+bg_BloodAvbty=PhotoImage(file="assets\\bloodAvl.png")
+bg_MedHistory=PhotoImage(file="assets\\medHistory.png")
+bg_UserInfo=PhotoImage(file="assets\\userinfo.png")
+bg_acc_recovery=PhotoImage(file="assets\\accrecoveryuser.png")
 
 
 
